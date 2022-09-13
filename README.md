@@ -3,6 +3,7 @@ This is a car rental reservation application for DePaul SE352/452.
 <br/>
 ## Tools
 
+
 | Tool                                                                                    | Used for           | commands              |
 |-----------------------------------------------------------------------------------------|--------------------|-----------------------|
 | [IntelliJ](https://www.jetbrains.com/idea/)                                             | Code Editor        |                       |
@@ -10,16 +11,5 @@ This is a car rental reservation application for DePaul SE352/452.
 | [GitFlow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) | Branching Strategy | refer to link         |
 | [SonarLint](https://www.sonarsource.com/products/sonarlint/)                            | Clean code         | IDE plugin            |
 | [Buildkite](https://buildkite.com)                                                      | CICD               | TODO: git integration |
-
-
-<br/>
-
-
-
-
- 
-
-
-
 
  
