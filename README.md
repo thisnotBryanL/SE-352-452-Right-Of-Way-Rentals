@@ -1,18 +1,14 @@
 ## Purpose
-
-<br/><br/>
+This is a car rental reservation application for DePaul SE352/452.
+<br/>
 ## Tools
 
 | Tool | Used for | commands 
 | ----------- | ----------- |------
-| [Example Format](https://google.com) | Example format 
-| 
-| 
-| 
-| 
-| 
+| [IntelliJ](https://www.jetbrains.com/idea/) | Code Editor | 
 
-<br/><br/>
+
+<br/>
 
 
 
