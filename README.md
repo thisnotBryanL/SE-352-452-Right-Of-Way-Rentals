@@ -16,13 +16,3 @@ This is a car rental reservation application for DePaul SE352/452.
 
 
 <br/>
-
-
-
-
- 
-
-
-
-
- 
