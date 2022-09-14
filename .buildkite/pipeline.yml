@@ -1,0 +1,3 @@
+steps:
+  - label: ":one-does-not-simply::mvn: Build"
+    command: "mvn clean install"

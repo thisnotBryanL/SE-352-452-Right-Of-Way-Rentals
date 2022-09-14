@@ -1,5 +1,8 @@
-## Purpose
+## Right of Way Rentals
 This is a car rental reservation application for DePaul SE352/452.
+
+[![Build status](https://badge.buildkite.com/5f6feaa90aee763d56023c744c858ffe0840c978e7bb593da1.svg)](https://buildkite.com/depaul-university/right-of-way-rentals-pipeline)
+
 <br/>
 ## Tools
 
