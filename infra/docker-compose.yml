@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    container_name: db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=depaul
+      - POSTGRES_PASSWORD=depaul
+      - POSTGRES_DB=rowr
+    volumes:
+      - ./scripts/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
+      - ./scripts/data.sql:/docker-entrypoint-initdb.d/2-data.sql
+  app:
+    image: rowr:latest
+    container_name: app
+    environment:
+      - POSTGRES_HOSTNAME=db
