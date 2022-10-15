@@ -32,6 +32,7 @@ public class Reservation {
     private int dropoffMileage;
 
     @Column(columnDefinition = "varchar(25) default 'AVAILABLE'")
+    @Enumerated(EnumType.STRING)
     private ReservationStatus status;
 
     @Column(name = "vehicle_id")

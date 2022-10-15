@@ -21,9 +21,11 @@ public class Vehicle {
     private long id;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private VehicleType type;
 
     @Column(columnDefinition = "varchar(30) default 'UNSPECIFIED'")
+    @Enumerated(EnumType.STRING)
     private VehicleMake make;
 
     @Column

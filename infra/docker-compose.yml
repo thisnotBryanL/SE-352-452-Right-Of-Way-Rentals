@@ -13,7 +13,7 @@ services:
       - ./scripts/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
       - ./scripts/data.sql:/docker-entrypoint-initdb.d/2-data.sql
   app:
-    image: rowr:latest
+    image: rowr:model-refactor
     container_name: app
     environment:
       - POSTGRES_HOSTNAME=db
