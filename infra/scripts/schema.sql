@@ -14,7 +14,7 @@ create table employees
     id   bigint not null
         primary key,
     name varchar(255),
-    role integer
+    role varchar(50)
 );
 
 alter table employees
@@ -63,7 +63,7 @@ create table vehicles
     make      varchar(30) default 'UNSPECIFIED'::character varying,
     mileage   integer,
     model     varchar(255),
-    type      integer
+    type      varchar(30)
 );
 
 alter table vehicles
