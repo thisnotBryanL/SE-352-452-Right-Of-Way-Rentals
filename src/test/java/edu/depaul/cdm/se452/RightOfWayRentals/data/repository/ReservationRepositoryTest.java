@@ -1,7 +1,6 @@
 package edu.depaul.cdm.se452.RightOfWayRentals.data.repository;
 
 import edu.depaul.cdm.se452.RightOfWayRentals.data.model.Customer;
-import edu.depaul.cdm.se452.RightOfWayRentals.data.model.Employee;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.model.Reservation;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.model.Vehicle;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.ReservationStatus;
@@ -26,7 +25,6 @@ class ReservationRepositoryTest {
     final int mileage_start = 3333;
     final Vehicle vehicle_1 = new Vehicle(VehicleType.VOLKSWAGON, VehicleMake.PICKUP, "2022 Tiguan", mileage_start, false);
     final Customer customer_1 = new Customer(1L,"John Doe");
-    final Employee employee_1 = new Employee(1L,"Jane Doe", Role.SALESMAN);
     final Reservation reservation_1;
     {
         reservation_1 = Reservation.builder()
@@ -36,8 +34,7 @@ class ReservationRepositoryTest {
                 .dropoffMileage(mileage_start + 200)
                 .status(ReservationStatus.ACTIVE)
                 .customerId(customer_1.getId())
-                .employeeId(employee_1.getId())
-                .vehicleId(vehicle_1.getId())
+                .vehicle(vehicle_1)
                 .build();
     }
 
@@ -46,15 +43,12 @@ class ReservationRepositoryTest {
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
-    private EmployeeRepository employeeRepository;
-    @Autowired
     private VehicleRepository vehicleRepository;
 
     @BeforeEach
     void populate() {
         persistReservation(reservation_1);
         customerRepository.save(customer_1);
-        employeeRepository.save(employee_1);
         vehicleRepository.save(vehicle_1);
     }
 
@@ -68,8 +62,6 @@ class ReservationRepositoryTest {
     void getAllReservations() {
         final Vehicle vehicle_2 = new Vehicle(VehicleType.UNSPECIFIED, VehicleMake.MINIVAN, "Model", 200, true);
         vehicleRepository.save(vehicle_2);
-        final Employee employee = new Employee();
-        employeeRepository.save(employee);
         final Customer customer = new Customer();
         customerRepository.save(customer);
         final Reservation reservation_2 = Reservation.builder()
@@ -78,8 +70,7 @@ class ReservationRepositoryTest {
                 .dropoff(now)
                 .dropoffMileage(200)
                 .status(ReservationStatus.COMPLETE)
-                .vehicleId(vehicle_2.getId())
-                .employeeId(employee.getId())
+                .vehicle(vehicle_2)
                 .customerId(customer.getId())
                 .build();
         persistReservation(reservation_2);
@@ -95,8 +86,7 @@ class ReservationRepositoryTest {
                 .dropoff(now)
                 .dropoffMileage(200)
                 .status(ReservationStatus.COMPLETE)
-                .vehicleId(1L)
-                .employeeId(1L)
+                .vehicle(vehicle_1)
                 .customerId(1L)
                 .build();
         reservationRepository.save(reservation_2);
