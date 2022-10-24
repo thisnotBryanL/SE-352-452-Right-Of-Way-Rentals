@@ -1,12 +1,13 @@
 package edu.depaul.cdm.se452.RightOfWayRentals.data.model;
 
 import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.ReservationStatus;
-import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.Role;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.VehicleMake;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.VehicleType;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,9 +22,7 @@ class ReservationTest {
         assertThat(reservation.getDropoff()).isNull();
         assertThat(reservation.getPickupMileage()).isZero();
         assertThat(reservation.getDropoffMileage()).isZero();
-        assertThat(reservation.getCustomerId()).isNull();
-        assertThat(reservation.getEmployeeId()).isNull();
-        assertThat(reservation.getVehicleId()).isNull();
+        assertThat(reservation.getCustomer()).isNull();
         assertThat(reservation.getStatus()).isNull();
     }
 
@@ -32,9 +31,8 @@ class ReservationTest {
         final int pickupMileage = 100;
         final int dropoffMileage = 1000;
         final ReservationStatus active = ReservationStatus.ACTIVE;
-        final Vehicle vehicleRented = new Vehicle(1, VehicleType.TOYOTA, VehicleMake.SEDAN, "2022 4Runner", pickupMileage, false);
-        final Customer customer = new Customer(1, "John Doe");
-        final Employee employee = new Employee(1, "Jane Doe", Role.SALESMAN);
+        final Vehicle vehicleRented = new Vehicle(1, VehicleType.TOYOTA, VehicleMake.SEDAN, "2022 4Runner", pickupMileage, false, List.of());
+        final Customer customer = new Customer(1, "John Doe", Collections.emptyList());
         final LocalDateTime dropoff = LocalDateTime.MAX;
 
 
@@ -45,9 +43,8 @@ class ReservationTest {
                 .pickupMileage(pickupMileage)
                 .dropoffMileage(dropoffMileage)
                 .status(active)
-                .vehicleId(vehicleRented.getId())
-                .customerId(customer.getId())
-                .employeeId(employee.getId())
+                .vehicle(vehicleRented)
+                .customer(customer)
                 .build();
 
         assertThat(reservation.getId()).isEqualTo(1);
@@ -57,15 +54,14 @@ class ReservationTest {
                 .isEqualTo(pickupMileage)
                 .isEqualTo(vehicleRented.getMileage());
         assertThat(reservation.getDropoffMileage()).isEqualTo(dropoffMileage);
-        assertThat(reservation.getCustomerId()).isEqualTo(customer.getId());
-        assertThat(reservation.getEmployeeId()).isEqualTo(employee.getId());
-        assertThat(reservation.getVehicleId()).isEqualTo(vehicleRented.getId());
+        assertThat(reservation.getCustomer()).isEqualTo(customer);
+        assertThat(reservation.getVehicle()).isEqualTo(vehicleRented);
         assertThat(reservation.getStatus()).isEqualTo(active);
         assertThat(reservation).isEqualTo(
                 new Reservation(
                         1, now, dropoff,
                         pickupMileage, dropoffMileage, active,
-                        vehicleRented.getId(), customer.getId(), employee.getId()
+                        vehicleRented, customer
                 )
         );
 

@@ -4,6 +4,9 @@ import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.VehicleMake;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.VehicleType;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class VehicleTest {
@@ -26,7 +29,7 @@ class VehicleTest {
         final VehicleMake make = VehicleMake.SEDAN;
         final String model = "2022 Ghost";
         final int mileage = 100;
-        final Vehicle vehicle = new Vehicle(id, vehicleType, make, model, mileage, true);
+        final Vehicle vehicle = new Vehicle(id, vehicleType, make, model, mileage, true, Collections.emptyList());
         assertThat(vehicle.isAvailable()).isTrue();
         assertThat(vehicle.getId()).isEqualTo(id);
         assertThat(vehicle.getMake()).isEqualTo(make);
@@ -34,8 +37,8 @@ class VehicleTest {
         assertThat(vehicle.getMileage()).isEqualTo(mileage);
         assertThat(vehicle.getType()).isEqualTo(vehicleType);
         assertThat(vehicle)
-                .isNotEqualTo(new Vehicle(id, vehicleType, make, model, mileage, false))
-                .isEqualTo(new Vehicle(id, vehicleType, make, model, mileage, true));
+                .isNotEqualTo(new Vehicle(id, vehicleType, make, model, mileage, false, List.of()))
+                .isEqualTo(new Vehicle(id, vehicleType, make, model, mileage, true, List.of()));
     }
 
 
