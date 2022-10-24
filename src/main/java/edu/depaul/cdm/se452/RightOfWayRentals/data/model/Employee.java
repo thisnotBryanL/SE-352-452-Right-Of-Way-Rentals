@@ -1,28 +1,35 @@
 package edu.depaul.cdm.se452.RightOfWayRentals.data.model;
 
-
+import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Generated;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
 @Entity
 @Data
 @Generated
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "CUSTOMERS")
-public class Customer {
+@NoArgsConstructor
+@Table(name = "EMPLOYEES")
+public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    @Column(name = "id")
     private long id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
-    public Customer(final String name) {
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public Employee(final String name, final Role role) {
         this.name = name;
+        this.role = role;
     }
+
 }

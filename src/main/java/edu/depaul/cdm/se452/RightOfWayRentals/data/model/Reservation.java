@@ -2,6 +2,7 @@ package edu.depaul.cdm.se452.RightOfWayRentals.data.model;
 
 import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.ReservationStatus;
 import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @Table(name = "RESERVATIONS")
 public class Reservation {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private long id;
 
@@ -34,13 +35,13 @@ public class Reservation {
     @Enumerated(EnumType.STRING)
     private ReservationStatus status;
 
+    @Column(name = "vehicle_id")
+    private Long vehicleId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "vehicle_id", referencedColumnName = "id")
-    private Vehicle vehicle;
+    @Column(name = "customer_id")
+    private Long customerId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
-    private Customer customer;
+    @Column(name = "employee_id")
+    private Long employeeId;
 
 }
