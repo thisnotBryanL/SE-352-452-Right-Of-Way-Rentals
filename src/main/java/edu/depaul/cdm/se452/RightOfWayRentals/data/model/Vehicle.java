@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -36,6 +38,10 @@ public class Vehicle {
 
     @Column
     private boolean available;
+
+//    @JsonIGnore
+    @OneToMany(mappedBy = "vehicle")
+    private List<Reservation> reservations = new ArrayList<>();
 
     public Vehicle(VehicleType type, VehicleMake make, String model, int mileage, boolean available) {
         this.type = type;

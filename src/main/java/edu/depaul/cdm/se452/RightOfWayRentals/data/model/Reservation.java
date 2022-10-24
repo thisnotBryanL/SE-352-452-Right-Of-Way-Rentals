@@ -35,13 +35,12 @@ public class Reservation {
     @Enumerated(EnumType.STRING)
     private ReservationStatus status;
 
-    @Column(name = "vehicle_id")
-    private Long vehicleId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "vehicle_id", referencedColumnName = "id")
+    private Vehicle vehicle;
 
     @Column(name = "customer_id")
     private Long customerId;
-
-    @Column(name = "employee_id")
-    private Long employeeId;
 
 }
