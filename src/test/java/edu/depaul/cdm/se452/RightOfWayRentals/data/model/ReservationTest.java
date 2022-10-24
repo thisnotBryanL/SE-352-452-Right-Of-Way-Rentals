@@ -6,6 +6,7 @@ import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.VehicleType;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,7 +22,7 @@ class ReservationTest {
         assertThat(reservation.getDropoff()).isNull();
         assertThat(reservation.getPickupMileage()).isZero();
         assertThat(reservation.getDropoffMileage()).isZero();
-        assertThat(reservation.getCustomerId()).isNull();
+        assertThat(reservation.getCustomer()).isNull();
         assertThat(reservation.getStatus()).isNull();
     }
 
@@ -31,7 +32,7 @@ class ReservationTest {
         final int dropoffMileage = 1000;
         final ReservationStatus active = ReservationStatus.ACTIVE;
         final Vehicle vehicleRented = new Vehicle(1, VehicleType.TOYOTA, VehicleMake.SEDAN, "2022 4Runner", pickupMileage, false, List.of());
-        final Customer customer = new Customer(1, "John Doe");
+        final Customer customer = new Customer(1, "John Doe", Collections.emptyList());
         final LocalDateTime dropoff = LocalDateTime.MAX;
 
 
@@ -43,7 +44,7 @@ class ReservationTest {
                 .dropoffMileage(dropoffMileage)
                 .status(active)
                 .vehicle(vehicleRented)
-                .customerId(customer.getId())
+                .customer(customer)
                 .build();
 
         assertThat(reservation.getId()).isEqualTo(1);
@@ -53,14 +54,14 @@ class ReservationTest {
                 .isEqualTo(pickupMileage)
                 .isEqualTo(vehicleRented.getMileage());
         assertThat(reservation.getDropoffMileage()).isEqualTo(dropoffMileage);
-        assertThat(reservation.getCustomerId()).isEqualTo(customer.getId());
+        assertThat(reservation.getCustomer()).isEqualTo(customer);
         assertThat(reservation.getVehicle()).isEqualTo(vehicleRented);
         assertThat(reservation.getStatus()).isEqualTo(active);
         assertThat(reservation).isEqualTo(
                 new Reservation(
                         1, now, dropoff,
                         pickupMileage, dropoffMileage, active,
-                        vehicleRented, customer.getId()
+                        vehicleRented, customer
                 )
         );
 
