@@ -1,6 +1,7 @@
 package edu.depaul.cdm.se452.RightOfWayRentals.data.repository;
 
 import edu.depaul.cdm.se452.RightOfWayRentals.data.model.Customer;
+import edu.depaul.cdm.se452.RightOfWayRentals.data.repository.implementation.CustomerRepositoryImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,10 +16,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class CustomerRepositoryTest {
+class ICustomerRepositoryTest {
 
     @Autowired
-    private CustomerRepository repository;
+    private CustomerRepositoryImpl repository;
+
     final Customer customer_1 = new Customer("Customer_1");
 
     @BeforeEach

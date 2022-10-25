@@ -3,6 +3,7 @@ package edu.depaul.cdm.se452.RightOfWayRentals.data.model;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.VehicleMake;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.VehicleType;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "VEHICLES")
 public class Vehicle {
 
@@ -42,5 +44,14 @@ public class Vehicle {
         this.mileage = mileage;
         this.available = available;
     }
+    //Builder Pattern may be useful for later
+//    public static Vehicle createVehicle(VehicleType type, VehicleMake make, String model, int mileage, boolean available) {
+//        return Vehicle.builder()
+//                .type(type)
+//                .make(make)
+//                .model(model)
+//                .available(available)
+//                .build();
+//    }
 
 }

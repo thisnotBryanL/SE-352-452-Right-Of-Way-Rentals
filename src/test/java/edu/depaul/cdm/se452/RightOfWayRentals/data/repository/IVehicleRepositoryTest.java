@@ -3,6 +3,7 @@ package edu.depaul.cdm.se452.RightOfWayRentals.data.repository;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.model.Vehicle;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.VehicleMake;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.VehicleType;
+import edu.depaul.cdm.se452.RightOfWayRentals.data.repository.implementation.VehicleRepositoryImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,10 +15,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class VehicleRepositoryTest {
+class IVehicleRepositoryTest {
 
     @Autowired
-    private VehicleRepository repository;
+    private VehicleRepositoryImpl repository;
 
     final Vehicle vehicle_1 = new Vehicle(VehicleType.MERCEDES, VehicleMake.COUPE, "2022 Car", 555, true);
 

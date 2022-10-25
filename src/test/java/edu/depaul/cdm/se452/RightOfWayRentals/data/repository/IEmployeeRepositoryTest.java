@@ -2,6 +2,7 @@ package edu.depaul.cdm.se452.RightOfWayRentals.data.repository;
 
 import edu.depaul.cdm.se452.RightOfWayRentals.data.model.Employee;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.Role;
+import edu.depaul.cdm.se452.RightOfWayRentals.data.repository.implementation.EmployeeRepositoryImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,10 +16,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class EmployeeRepositoryTest {
+class IEmployeeRepositoryTest {
 
     @Autowired
-    private EmployeeRepository repository;
+    private EmployeeRepositoryImpl repository;
 
     final Employee employee_1 = new Employee( "John Doe", Role.SALESMAN);
 

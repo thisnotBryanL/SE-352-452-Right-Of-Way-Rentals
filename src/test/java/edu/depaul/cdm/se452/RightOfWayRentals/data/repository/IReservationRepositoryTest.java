@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class ReservationRepositoryTest {
+class IReservationRepositoryTest {
     final LocalDateTime now = LocalDateTime.now();
     final int mileage_start = 3333;
     final Vehicle vehicle_1 = new Vehicle(VehicleType.VOLKSWAGON, VehicleMake.PICKUP, "2022 Tiguan", mileage_start, false);
@@ -42,36 +42,36 @@ class ReservationRepositoryTest {
     }
 
     @Autowired
-    private ReservationRepository reservationRepository;
+    private IReservationRepository IReservationRepository;
     @Autowired
-    private CustomerRepository customerRepository;
+    private ICustomerRepository ICustomerRepository;
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private IEmployeeRepository IEmployeeRepository;
     @Autowired
-    private VehicleRepository vehicleRepository;
+    private IVehicleRepository IVehicleRepository;
 
     @BeforeEach
     void populate() {
         persistReservation(reservation_1);
-        customerRepository.save(customer_1);
-        employeeRepository.save(employee_1);
-        vehicleRepository.save(vehicle_1);
+        ICustomerRepository.save(customer_1);
+        IEmployeeRepository.save(employee_1);
+        IVehicleRepository.save(vehicle_1);
     }
 
     @Test
     void givenId_findsReservation() {
-        final Reservation actual = reservationRepository.findById(1L).orElseThrow();
+        final Reservation actual = IReservationRepository.findById(1L).orElseThrow();
         assertThat(actual).isEqualTo(reservation_1);
     }
 
     @Test
     void getAllReservations() {
         final Vehicle vehicle_2 = new Vehicle(VehicleType.UNSPECIFIED, VehicleMake.MINIVAN, "Model", 200, true);
-        vehicleRepository.save(vehicle_2);
+        IVehicleRepository.save(vehicle_2);
         final Employee employee = new Employee();
-        employeeRepository.save(employee);
+        IEmployeeRepository.save(employee);
         final Customer customer = new Customer();
-        customerRepository.save(customer);
+        ICustomerRepository.save(customer);
         final Reservation reservation_2 = Reservation.builder()
                 .pickup(now)
                 .pickupMileage(100)
@@ -83,7 +83,7 @@ class ReservationRepositoryTest {
                 .customerId(customer.getId())
                 .build();
         persistReservation(reservation_2);
-        assertThat(reservationRepository.findAll()).hasSize(2)
+        assertThat(IReservationRepository.findAll()).hasSize(2)
                 .contains(reservation_1, reservation_2);
     }
 
@@ -99,13 +99,13 @@ class ReservationRepositoryTest {
                 .employeeId(1L)
                 .customerId(1L)
                 .build();
-        reservationRepository.save(reservation_2);
-        final List<Reservation> actual = reservationRepository.findAllByStatus(ReservationStatus.ACTIVE);
+        IReservationRepository.save(reservation_2);
+        final List<Reservation> actual = IReservationRepository.findAllByStatus(ReservationStatus.ACTIVE);
         assertThat(actual).hasSize(1).contains(reservation_1);
     }
 
     private void persistReservation(Reservation reservation) {
-        reservationRepository.save(reservation);
+        IReservationRepository.save(reservation);
     }
 
 }

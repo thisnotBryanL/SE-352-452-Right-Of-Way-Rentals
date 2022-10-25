@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ReservationRepository extends CrudRepository<Reservation, Long> {
+public interface IReservationRepository extends CrudRepository<Reservation, Long> {
 
     List<Reservation> findAllByStatus(ReservationStatus reservationStatus);
 }
