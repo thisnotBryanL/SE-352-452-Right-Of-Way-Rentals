@@ -18,9 +18,9 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
 
     /**
-     * TODO
-     * @param customerId
-     * @return
+     * Search for a customer using customer ID
+     * @param customerId input customer ID
+     * @return return the name of the customer
      */
     public Customer getCustomerById(final Long customerId) {
         log.trace("Querying customer repository with ID : {}", customerId);
@@ -28,8 +28,8 @@ public class CustomerService {
     }
 
     /**
-     * TODO
-     * @return
+     * View all customers
+     * @return The list of all customers
      */
     public List<Customer> getAllCustomers() {
         log.trace("Attempting to query all customers...");
@@ -40,9 +40,9 @@ public class CustomerService {
     }
 
     /**
-     * TODO
-     * @param name
-     * @return
+     * Create a new customer and save it in the database
+     * @param name Input customer name
+     * @return A new customer & save in customer repository
      */
     public Customer createCustomer(final String name) {
         log.trace("Creating customer with name : {}", name);

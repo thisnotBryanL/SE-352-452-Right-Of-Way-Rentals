@@ -22,9 +22,9 @@ public class ReservationService {
     final ReservationHelper helper;
 
     /**
-     * TODO
-     * @param id
-     * @return
+     * Search for reservation using reservation ID
+     * @param id Input the unique reservation ID
+     * @return Reservation info & status
      */
     public Reservation getReservationById(Long id) {
         log.trace("Attempting to find reservation with ID : {}", id);
@@ -32,8 +32,8 @@ public class ReservationService {
     }
 
     /**
-     * TODO
-     * @return
+     * Return the list of all reservations, info & status.
+     * @return The list of all reservations
      */
     public List<Reservation> getAllReservations() {
         log.trace("Attempting to query for all reservations...");
@@ -44,8 +44,8 @@ public class ReservationService {
     }
 
     /**
-     * TODO
-     * @return
+     * Search for a reservation info & status using a customer ID
+     * @return Reservation info & status by customer ID
      */
     public List<Reservation> getReservationsWithCustomerId(final Long customerId) {
         log.trace("Attempting to find all reservations with customer ID : {}", customerId);
@@ -53,8 +53,8 @@ public class ReservationService {
     }
 
     /**
-     * TODO
-     * @return
+     * Search for a reservation info & status using a vehicle ID
+     * @return Reservation info & status by vehicle ID
      */
     public List<Reservation> getReservationsWithVehicleId(final Long vehicleId) {
         log.trace("Attempting to find all reservations with vehicle ID : {}", vehicleId);
