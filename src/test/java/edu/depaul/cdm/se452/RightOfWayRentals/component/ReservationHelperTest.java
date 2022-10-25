@@ -17,7 +17,6 @@ import java.util.Collections;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -59,8 +58,6 @@ class ReservationHelperTest {
 
         assertThat(helper.getCustomerVehiclePair(expected_customer.getId(), expected_vehicle.getId()))
                 .isEqualTo(CustomerVehiclePair.of(expected_customer, expected_vehicle));
-
-
     }
 
 
