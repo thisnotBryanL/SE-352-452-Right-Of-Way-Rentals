@@ -1,7 +1,7 @@
 package edu.depaul.cdm.se452.RightOfWayRentals.data.repository;
 
 import edu.depaul.cdm.se452.RightOfWayRentals.data.model.Customer;
-import edu.depaul.cdm.se452.RightOfWayRentals.data.repository.implementation.CustomerRepositoryImpl;
+import edu.depaul.cdm.se452.RightOfWayRentals.data.repository.ICustomerRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ICustomerRepositoryTest {
 
     @Autowired
-    private CustomerRepositoryImpl repository;
+    private ICustomerRepository repository;
 
     final Customer customer_1 = new Customer("Customer_1");
 
