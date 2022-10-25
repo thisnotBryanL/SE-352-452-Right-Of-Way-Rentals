@@ -50,16 +50,14 @@ public class Reservation {
         LocalDateTime localPickUpdate = LocalDateTime.parse(pickupTime , dtf);
         LocalDateTime localDropOffDate = LocalDateTime.parse(dropOffTime, dtf);
 
-        var reservation = Reservation.builder()
+        return Reservation.builder()
                 .customer(customer)
                 .vehicle(vehicle)
                 .status(ReservationStatus.RESERVED)
                 .pickupMileage(vehicle.getMileage())
-                .dropoffMileage(vehicle.getMileage()) // will need to include method for starting reservation / ending reservation
+                .dropoffMileage(vehicle.getMileage())
                 .pickup(localPickUpdate)
-                .dropoff(localDropOffDate) // TODO : based on number of weeks / days / and dropoff time ("09:08 AM"), add this to the pickup LocalDateTime
+                .dropoff(localDropOffDate)
                 .build();
-
-        return reservation;
     }
 }
