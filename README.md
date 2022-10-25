@@ -23,3 +23,11 @@ This is a car rental reservation application for DePaul SE352/452.
 - To view application logs - `docker logs app [-f]`
   - `-f` to hang the terminal / follow along with logs
 <br/>
+
+## Tools
+
+| Contributors                                                                              | Contributions|
+|-----------------------------------------------------------------------------------------|--------------------|
+| Bryan Lee                                         | Service/Controller |
+| Nermin Dedovic                                          | Service/Controller/Relationship for Models        |               
+| Ethan Ly  | Relationship for Models | 
