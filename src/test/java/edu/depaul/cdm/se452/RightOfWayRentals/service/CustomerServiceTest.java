@@ -18,9 +18,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class CustomerServiceTest {
 
-    @Mock
-    CustomerRepository customerRepository;
-
+    @Mock CustomerRepository customerRepository;
     CustomerService service;
 
     @BeforeEach
