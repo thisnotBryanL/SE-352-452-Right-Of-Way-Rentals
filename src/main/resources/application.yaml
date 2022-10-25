@@ -8,8 +8,4 @@ spring:
       ddl-auto: update
     database: postgresql
     show-sql: true
-management:
-  endpoints:
-    web:
-      exposure:
-        include: mappings
+

@@ -13,9 +13,7 @@ services:
       - ./scripts/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
       - ./scripts/data.sql:/docker-entrypoint-initdb.d/2-data.sql
   app:
-    image: rowr:m3
+    image: rowr:latest
     container_name: app
     environment:
       - POSTGRES_HOSTNAME=db
-    ports:
-      - "8080:8080"

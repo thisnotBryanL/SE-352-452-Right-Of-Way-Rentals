@@ -1,6 +1,6 @@
 create table customers
 (
-    id   bigserial
+    id   bigint not null
         primary key,
     name varchar(255)
 );
@@ -8,46 +8,64 @@ create table customers
 alter table customers
     owner to depaul;
 
--- ########################################
 
-create table vehicles
+create table employees
 (
-    id        bigserial
+    id   bigint not null
         primary key,
-    available boolean,
-    make      varchar(30) default 'UNSPECIFIED'::character varying,
-    mileage   integer,
-    model     varchar(255),
-    type      varchar(255)
+    name varchar(255),
+    role integer
 );
 
-alter table vehicles
+alter table employees
     owner to depaul;
 
--- ########################################
 
+create table locations
+(
+    id      bigint not null
+        primary key,
+    city    varchar(255),
+    state   varchar(2),
+    zipcode varchar(255)
+);
+
+alter table locations
+    owner to depaul;
+
+
+-- auto-generated definition
 create table reservations
 (
-    id              bigserial
+    id              bigint not null
         primary key,
+    customer_id     bigint,
     dropoff_time    timestamp,
     dropoff_mileage integer,
+    employee_id     bigint,
     pickup_time     timestamp,
     pickup_mileage  integer,
     status          varchar(25) default 'AVAILABLE'::character varying,
-    customer_id     bigint
-        constraint fk8eccffekcj27jkdiyw2e9r8ks
-            references customers,
     vehicle_id      bigint
-        constraint fk7s1rlt0ccv2hjeaubf52di8er
-            references vehicles
 );
 
 alter table reservations
     owner to depaul;
 
 
--- ########################################
 
+-- auto-generated definition
+create table vehicles
+(
+    id        bigint not null
+        primary key,
+    available boolean,
+    make      varchar(30) default 'UNSPECIFIED'::character varying,
+    mileage   integer,
+    model     varchar(255),
+    type      integer
+);
 
+alter table vehicles
+    owner to depaul;
 
