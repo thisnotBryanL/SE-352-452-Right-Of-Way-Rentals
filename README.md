@@ -115,3 +115,11 @@ curl -s -X 'GET' \
 ```
 
 
+
+## Contributors
+
+| Contributors                                                                              | Contributions|
+|-----------------------------------------------------------------------------------------|--------------------|
+| Bryan Lee                                         | Service/Controller |
+| Nermin Dedovic                                          | Service/Controller/Relationship for Models        |               
+| Ethan Ly  | Relationship for Models | 
