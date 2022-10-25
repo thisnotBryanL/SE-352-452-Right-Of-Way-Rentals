@@ -14,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.DirtiesContext;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -61,7 +62,6 @@ class ReservationRepositoryTest {
 
     @Test
     void givenId_findsReservation() {
-        final Iterable<Reservation> all = reservationRepository.findAll();
         final Reservation actual = reservationRepository.findById(1L).orElseThrow();
         assertThat(actual).isEqualTo(reservation_1);
     }
@@ -100,6 +100,23 @@ class ReservationRepositoryTest {
         reservationRepository.save(reservation_2);
         final List<Reservation> actual = reservationRepository.findAllByStatus(ReservationStatus.ACTIVE);
         assertThat(actual).hasSize(1).contains(reservation_1);
+    }
+
+    @Test
+    void findAllByVehicle() {
+        assertThat(reservationRepository.findAllByVehicle(vehicle_1)).isEqualTo(Collections.singletonList(reservation_1));
+    }
+
+    @Test
+    void findAllByCustomer() {
+        assertThat(reservationRepository.findAllByCustomer(customer_1)).isEqualTo(Collections.singletonList(reservation_1));
+    }
+
+    @Test
+
+    void findAllByCustomerAndVehicle() {
+        assertThat(reservationRepository.findAllByVehicleAndCustomer(vehicle_1, customer_1)).isEqualTo(Collections.singletonList(reservation_1));
+
     }
 
     private void persistReservation(Reservation reservation) {
