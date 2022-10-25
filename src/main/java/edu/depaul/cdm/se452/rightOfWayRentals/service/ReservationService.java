@@ -86,6 +86,14 @@ public class ReservationService {
         return reservationRepository.save(reservation);
     }
 
+    /**
+     *
+     * @param customerID Customers ID
+     * @param vehicleID ID of the vehicle the customer wants to be rented
+     * @param pickupTime The LocalDateTime string the customer wants to pick up the vehicle (format: yyyy-MM-dd-HH:mm)
+     * @param dropOffTime The LocalDateTime string the customer wants to return the vehicle (format: yyyy-MM-dd-HH:mm)
+     * @return Reservation and also persists to database
+     */
     public Reservation addReservation(Long customerID, Long vehicleID, String pickupTime, String dropOffTime){
 
         var cvPair = helper.getCustomerVehiclePair(customerID,vehicleID);
