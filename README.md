@@ -24,7 +24,7 @@ This is a car rental reservation application for DePaul SE352/452.
   - `-f` to hang the terminal / follow along with logs
 <br/>
 
-## Tools
+## Contributors
 
 | Contributors                                                                              | Contributions|
 |-----------------------------------------------------------------------------------------|--------------------|
