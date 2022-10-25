@@ -33,69 +33,69 @@ public class RentalCarController {
 
 
     @GetMapping(value = "customers/{customerId}")
-    @Operation(summary = "TODO")
+    @Operation(summary = "Returns the customer that matches the supplied Customer ID")
     public Customer getCustomer(@PathVariable final Long customerId) {
-        log.trace("TODO {}", customerId);
+        log.trace("getCustomer : {}", customerId);
         return customerService.getCustomerById(customerId);
     }
 
     @GetMapping(value = "customers")
-    @Operation(summary = "TODO")
+    @Operation(summary = "Returns a list of all customers in the customer table")
     @ApiResponse(responseCode = "200", description = "valid response", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = Customer.class))})
     public List<Customer> allCustomers() {
-        log.trace("TODO");
+        log.trace("allCustomers");
         return customerService.getAllCustomers();
     }
 
     @PostMapping(value = "customers", consumes = MediaType.APPLICATION_JSON_VALUE)
-    @Operation(description = "TODO")
+    @Operation(description = "Adds a customer to the customer table with the supplied customer name")
     public Customer addCustomer(@RequestBody final String customerName) {
-        log.trace("TODO {}", customerName);
+        log.trace("addCustomer {}", customerName);
         return customerService.createCustomer(customerName);
     }
 
     @GetMapping(value = "vehicles/{vehicleId}")
-    @Operation(description = "TODO")
+    @Operation(description = "Gets a single vehicle with the supplied vehicle ID")
     public Vehicle getVehicle(@PathVariable final Long vehicleId) {
-        log.trace("TODO {}", vehicleId);
+        log.trace("getVehicle {}", vehicleId);
         return vehicleService.getVehicleById(vehicleId);
     }
 
     @GetMapping(value = "vehicles")
-    @Operation(description = "TODO")
+    @Operation(description = "Gets a list of all the vehicles from the vehicle table")
     public List<Vehicle> allVehicles() {
-        log.trace("TODO");
+        log.trace("allVehicles");
         return vehicleService.getAllVehicles();
     }
 
     @PostMapping(value = "vehicles", consumes = MediaType.APPLICATION_JSON_VALUE)
-    @Operation(description = "TODO")
+    @Operation(description = "Adds a single vehicle to the vehicle table with a POST request")
     public Vehicle addVehicle(@RequestBody final PostVehicleRequest request) {
-        log.trace("TODO {}", request);
+        log.trace("addVehicle {}", request);
         return vehicleService.addVehicle(request.getVehicleType(), request.getVehicleMake(), request.getVehicleModel(), request.getVehicleMileage());
     }
 
     @GetMapping(value = "reservations/{reservationId}")
     public Reservation getReservation(@PathVariable final Long reservationId) {
-        log.trace("TODO {}", reservationId);
+        log.trace("getReservation {}", reservationId);
         return reservationService.getReservationById(reservationId);
     }
 
     @GetMapping(value = "reservations")
     public List<Reservation> allReservations() {
-        log.trace("TODO");
+        log.trace("allReservations");
         return reservationService.getAllReservations();
     }
 
     @GetMapping(value = "reservations/customer/{customerId}")
     public List<Reservation> reservationsRelatedToCustomer(@PathVariable final Long customerId) {
-        log.trace("TODO {}", customerId);
+        log.trace("reservationsRelatedToCustomer {}", customerId);
         return reservationService.getReservationsWithCustomerId(customerId);
     }
 
     @GetMapping(value = "reservations/vehicle/{vehicleId}")
     public List<Reservation> reservationsRelatedToVehicle(@PathVariable final Long vehicleId) {
-        log.trace("TODO {}", vehicleId);
+        log.trace("reservationsRelatedToVehicle {}", vehicleId);
         return reservationService.getReservationsWithVehicleId(vehicleId);
     }
 
@@ -103,13 +103,13 @@ public class RentalCarController {
     public List<Reservation> reservationsRelatedToCustomerAndVehicle(
             @RequestParam("customer") final Long customerId,
             @RequestParam("vehicle") final Long vehicleId) {
-        log.trace("TODOD {} {}", customerId, vehicleId);
+        log.trace("reservationsRelatedToCustomerAndVehicle {} {}", customerId, vehicleId);
         return reservationService.getReservationsWithCustomerAndVehicle(customerId, vehicleId);
     }
 
     @PostMapping(value = "reservations")
     public Reservation addReservation(@RequestBody final PostReservationRequest reservationRequest) {
-        log.trace("TODO {}", reservationRequest);
+        log.trace("addReservation {}", reservationRequest);
         return reservationService.addReservation(reservationRequest);
     }
 

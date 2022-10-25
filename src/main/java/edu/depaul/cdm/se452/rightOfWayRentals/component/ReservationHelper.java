@@ -18,18 +18,18 @@ public class ReservationHelper {
     private final CustomerRepository customerRepository;
 
     /**
-     * TODO
-     * @param id
-     * @return
+     * This helper method grabs the customer row that has the matching ID
+     * @param id Customer ID
+     * @return Customer that matches ID
      */
     public Customer getCustomerWithId(final Long id) {
         return customerRepository.findById(id).orElseThrow();
     }
 
     /**
-     * TODO
-     * @param id
-     * @return
+     * This helper method grabs the vehicle row that has the matching ID
+     * @param id Vehicle ID
+     * @return Vehicle that matches ID
      */
     public Vehicle getVehicleWithId(final Long id) {
         return vehicleRepository.findById(id).orElseThrow();
@@ -37,10 +37,11 @@ public class ReservationHelper {
 
 
     /**
-     * TODO
-     * @param customerId
-     * @param vehicleId
-     * @return
+     * This method creates a CustomerVehiclePair which matches the customer and vehicle together based off
+     *  of there IDs
+     * @param customerId Customer ID
+     * @param vehicleId Vehicle ID
+     * @return Customer Vehicle Pair
      */
     public CustomerVehiclePair getCustomerVehiclePair(final Long customerId, final Long vehicleId) {
         return CustomerVehiclePair.of(getCustomerWithId(customerId), getVehicleWithId(vehicleId));
