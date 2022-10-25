@@ -1,9 +1,8 @@
 package edu.depaul.cdm.se452.RightOfWayRentals.data.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Generated;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,6 +21,7 @@ public class Customer {
     @Column
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "customer")
     private List<Reservation> reservations;
 

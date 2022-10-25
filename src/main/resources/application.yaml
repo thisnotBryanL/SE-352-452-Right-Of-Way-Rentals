@@ -5,7 +5,11 @@ spring:
     url: jdbc:postgresql://${POSTGRES_HOSTNAME:localhost}:5432/rowr
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     database: postgresql
     show-sql: true
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: mappings

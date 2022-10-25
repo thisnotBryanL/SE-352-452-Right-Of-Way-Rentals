@@ -1,10 +1,12 @@
 package edu.depaul.cdm.se452.RightOfWayRentals.data.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.VehicleMake;
 import edu.depaul.cdm.se452.RightOfWayRentals.data.pojo.VehicleType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +40,7 @@ public class Vehicle {
     @Column
     private boolean available;
 
-//    @JsonIGnore
+    @JsonIgnore
     @OneToMany(mappedBy = "vehicle")
     private List<Reservation> reservations = new ArrayList<>();
 
