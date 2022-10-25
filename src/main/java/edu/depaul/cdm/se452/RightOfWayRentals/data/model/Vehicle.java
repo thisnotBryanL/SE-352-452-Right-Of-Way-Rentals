@@ -50,4 +50,13 @@ public class Vehicle {
         this.available = available;
     }
 
+    public Vehicle(VehicleType type, VehicleMake make, String model , int mileage) {
+        this.type = type;
+        this.make = make;
+        this.model = model;
+        this.mileage = mileage;
+        this.available = true;
+        this.reservations = new ArrayList<>();
+    }
+
 }
