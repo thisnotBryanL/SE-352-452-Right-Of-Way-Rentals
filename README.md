@@ -4,6 +4,11 @@ This is a car rental reservation application for DePaul SE352/452.
 [![Build status](https://badge.buildkite.com/5f6feaa90aee763d56023c744c858ffe0840c978e7bb593da1.svg)](https://buildkite.com/depaul-university/right-of-way-rentals-pipeline)
 
 <br/>
+
+## Documentation
+Swagger UI: http://localhost:8080/swagger-ui/index.html
+
+
 ## Tools
 
 | Tool                                                                                    | Used for           | commands      |
