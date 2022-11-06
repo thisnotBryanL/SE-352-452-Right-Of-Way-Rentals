@@ -3,19 +3,32 @@ services:
   db:
     image: postgres:latest
     container_name: db
+    env_file: .env
     ports:
-      - "5432:5432"
+      - $POSTGRES_PORT:$POSTGRES_PORT
     environment:
-      - POSTGRES_USER=depaul
-      - POSTGRES_PASSWORD=depaul
-      - POSTGRES_DB=rowr
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: $POSTGRES_DATABASE_NAME
     volumes:
       - ./scripts/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql
       - ./scripts/data.sql:/docker-entrypoint-initdb.d/2-data.sql
+  mongo:
+    container_name: mongodb
+    image: mongo
+    env_file: .env
+    volumes:
+      - "$MONGO_EXTERNAL_LOC:/data/db"
+    restart: always
+    ports:
+      - $MONGO_PORT:$MONGO_PORT
+
   app:
     image: rowr:m3
+    env_file: .env
     container_name: app
     environment:
-      - POSTGRES_HOSTNAME=db
+      POSTGRES_HOSTNAME: $POSTGRES_HOST
+      MONGO_HOSTNAME: $MONGO_HOST
     ports:
-      - "8080:8080"
+      - $APP_PORT:$APP_PORT

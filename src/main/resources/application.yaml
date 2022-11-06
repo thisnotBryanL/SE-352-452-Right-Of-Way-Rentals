@@ -8,6 +8,10 @@ spring:
       ddl-auto: update
     database: postgresql
     show-sql: true
+  data:
+    mongodb:
+      host: ${MONGO_HOSTNAME:localhost}
+      port: 27017
 management:
   endpoints:
     web:
