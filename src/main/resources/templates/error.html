@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/app.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="main-container">
+    <div class="header-container">
+        <h3 class="header">ERROR</h3>
+    </div>
+    <div class="body-container">
+        <p th:text="${exception}" class="fail"></p>
+    </div>
+
+
+</div>
+
+</body>
+</html>
