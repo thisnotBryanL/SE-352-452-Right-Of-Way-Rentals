@@ -12,32 +12,34 @@
         <div class="header-container">
             <h3 class="header">VEHICLES</h3>
         </div>
-        <th:block th:each="vehicle : ${vehicles}">
-            <div class="vehicle-block">
-                <table class="table-dark">
-                    <tr class="d-md-table-row">
-                        <td>ID</td>
-                        <td th:text="${vehicle.getId()}" />
-                    </tr>
-                    <tr class="d-md-table-row">
-                        <td>TYPE</td>
-                        <td th:text="${vehicle.getType()}" />
-                    </tr>
-                    <tr class="d-md-table-row">
-                        <td>MAKE</td>
-                        <td th:text="${vehicle.getMake()}" />
-                    </tr>
-                    <tr class="d-md-table-row">
-                        <td>MODEL</td>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Make</th>
+                    <th scope="col">Mileage</th>
+                    <th scope="col">#</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="vehicle: ${vehicles}" class="vehicle-wrapper">
+                    <tr>
+                        <th scope="row" th:text="${vehicle.getId()}"/>
+                        <td th:text="${vehicle.getType()}"/>
                         <td th:text="${vehicle.getModel()}" />
-                    </tr>
-                    <tr class="d-md-table-row">
-                        <td>MILEAGE</td>
+                        <td th:text="${vehicle.getMake()}" />
                         <td th:text="${vehicle.getMileage()}" />
+                        <td>
+                            <a th:href="@{/vehicles/reserve/{id}(id=${vehicle.getId()})}" class="btn btn-primary btn-sm">RESERVE</a>
+                        </td>
                     </tr>
-                </table>
-            </div>
-        </th:block>
+                </th:block>
+                </tbody>
+            </table>
+
+<!--        </th:block>-->
     </div>
 
 

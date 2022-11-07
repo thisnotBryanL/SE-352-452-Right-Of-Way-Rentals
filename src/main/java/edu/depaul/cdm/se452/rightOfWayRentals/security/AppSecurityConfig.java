@@ -20,7 +20,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/css/*", "/js/*").permitAll()
-                .antMatchers("/home", "/reservations", "/vehicles").authenticated()
+                .antMatchers("/home", "/reservations", "/vehicles", "/vehicles/*", "/reservations/*").authenticated()
                 .and().formLogin()
                 .and().httpBasic();
         http

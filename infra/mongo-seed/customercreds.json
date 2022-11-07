@@ -3,6 +3,12 @@
     "username": "NERM",
     "password": "secret",
     "role": "USER",
-    "customerId": "1"
+    "customerId": "0"
+  },
+  {
+    "username": "admin",
+    "password": "secret",
+    "role": "USER",
+    "customerId": "1000"
   }
 ]
