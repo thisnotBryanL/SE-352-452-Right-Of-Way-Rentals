@@ -32,7 +32,7 @@ class ReservationTest {
         final int dropoffMileage = 1000;
         final ReservationStatus active = ReservationStatus.ACTIVE;
         final Vehicle vehicleRented = new Vehicle(1, VehicleType.TOYOTA, VehicleMake.SEDAN, "2022 4Runner", pickupMileage, false, List.of());
-        final Customer customer = new Customer(1, "John Doe", Collections.emptyList());
+        final Customer customer = new Customer(1L, "John Doe", Collections.emptyList());
         final LocalDateTime dropoff = LocalDateTime.MAX;
 
 

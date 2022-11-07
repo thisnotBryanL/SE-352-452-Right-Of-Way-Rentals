@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,7 +23,7 @@ public class CustomerUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.trace("Attempting to retrieve customer with username : {}", username);
-        final CustomerCredentials customerCredentials = Optional.ofNullable(credentialsRepository.findByUsername(username))
+        final CustomerCredentials customerCredentials = credentialsRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Customer details not found for the username : " + username));
         log.trace("Customer credentials found : {}", customerCredentials);
         final Customer customer = customerRepository.findById(customerCredentials.getCustomerId())

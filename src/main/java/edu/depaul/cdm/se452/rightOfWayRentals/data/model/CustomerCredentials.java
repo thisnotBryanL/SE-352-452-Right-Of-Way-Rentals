@@ -7,9 +7,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Data
-@Document
+@Document(collection = "CustomerCredentials")
 public class CustomerCredentials {
     @Id
+    private String id;
     private String username;
     private String password;
     private String role;

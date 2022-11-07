@@ -9,7 +9,7 @@ class CustomerTest {
     @Test
     void testId() {
         final Customer customer = new Customer();
-        assertThat(customer.getId()).isZero();
+        assertThat(customer.getId()).isNull();
         customer.setId(1L);
         assertThat(customer.getId()).isEqualTo(1L);
     }

@@ -12,8 +12,12 @@ spring:
     mongodb:
       host: ${MONGO_HOSTNAME:localhost}
       port: 27017
+      database: rowr
 management:
   endpoints:
     web:
       exposure:
         include: mappings
+logging:
+  level:
+    edu.depaul.cdm.se452.rightOfWayRentals: trace

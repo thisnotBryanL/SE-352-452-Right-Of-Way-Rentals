@@ -48,8 +48,8 @@ class CustomerServiceTest {
 
     @Test
     void testGetAllCustomers() {
-        final Customer customer_1 = new Customer(1, "Wendy", Collections.emptyList());
-        final Customer customer_2 = new Customer(2, "Jerry", Collections.emptyList());
+        final Customer customer_1 = new Customer(1L, "Wendy", Collections.emptyList());
+        final Customer customer_2 = new Customer(2L, "Jerry", Collections.emptyList());
         List<Customer> expected = Arrays.asList(customer_1, customer_2);
         when(customerRepository.findAll()).thenReturn(expected);
 
