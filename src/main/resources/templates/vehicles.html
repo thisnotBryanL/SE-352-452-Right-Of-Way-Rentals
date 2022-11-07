@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicles</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/app.css}" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="header-container">
+            <h3 class="header">VEHICLES</h3>
+        </div>
+        <th:block th:each="vehicle : ${vehicles}">
+            <div class="vehicle-block">
+                <table class="table-dark">
+                    <tr class="d-md-table-row">
+                        <td>ID</td>
+                        <td th:text="${vehicle.getId()}" />
+                    </tr>
+                    <tr class="d-md-table-row">
+                        <td>TYPE</td>
+                        <td th:text="${vehicle.getType()}" />
+                    </tr>
+                    <tr class="d-md-table-row">
+                        <td>MAKE</td>
+                        <td th:text="${vehicle.getMake()}" />
+                    </tr>
+                    <tr class="d-md-table-row">
+                        <td>MODEL</td>
+                        <td th:text="${vehicle.getModel()}" />
+                    </tr>
+                    <tr class="d-md-table-row">
+                        <td>MILEAGE</td>
+                        <td th:text="${vehicle.getMileage()}" />
+                    </tr>
+                </table>
+            </div>
+        </th:block>
+    </div>
+
+
+</body>
+</html>

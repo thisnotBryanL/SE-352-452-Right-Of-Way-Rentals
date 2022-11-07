@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservations</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/app.css}" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="header-container">
+            <h3 class="header">RESERVATIONS</h3>
+        </div>
+
+            <th:block th:each="reservation : ${reservations}">
+                <div class="reservation-block">
+                    <table class="table-dark">
+                        <tr class="d-md-table-row">
+                            <td>PICKUP</td>
+                            <td th:text="${reservation.getPickup()}" />
+                        </tr>
+                        <tr class="d-md-table-row">
+                            <td>DROPOFF</td>
+                            <td th:text="${reservation.getDropoff()}" />
+                        </tr>
+                        <tr class="d-md-table-row">
+                            <td>vehicleId</td>
+                            <td th:text="${reservation.getVehicle().getId()}" />
+                        </tr>
+                    </table>
+                </div>
+            </th:block>
+
+    </div>
+
+</body>
+</html>

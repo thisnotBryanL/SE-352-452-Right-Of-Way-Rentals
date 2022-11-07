@@ -31,4 +31,20 @@ public class RentalCarUIController {
         model.addAttribute("username", currentCustomer.getUsername());
         return "home";
     }
+
+    @GetMapping("/reservations")
+    public String getCustomerReservations(final Model model) {
+        final CustomerUserDetails currentCustomer = securityHelper.getCurrentCustomer();
+        model.addAttribute(
+                "reservations",
+                reservationService.getReservationsWithCustomerId(currentCustomer.getCustomerId())
+        );
+        return "customer-reservations";
+    }
+
+    @GetMapping("/vehicles")
+    public String getVehicles(final Model model) {
+        model.addAttribute("vehicles", vehicleService.getAllVehicles());
+        return "vehicles";
+    }
 }

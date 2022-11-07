@@ -18,7 +18,7 @@ create table vehicles
     make      varchar(30) default 'UNSPECIFIED'::character varying,
     mileage   integer,
     model     varchar(255),
-    type      varchar(255)
+    type      varchar(30) default 'UNSPECIFIED'::character varying
 );
 
 alter table vehicles
