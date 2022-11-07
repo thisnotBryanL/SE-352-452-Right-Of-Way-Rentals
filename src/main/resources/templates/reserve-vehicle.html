@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicles</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+    <div class="main-container">
+        <div class="header-container">
+            <h3 class="header">RESERVE VEHICLE</h3>
+        </div>
+        <div class="form-container">
+            <form action="#" th:action="@{/vehicles/reserve}" th:object="${reservationRequest}" method="post" class="reserve-vehicle-form">
+                <label class="form-group vehicle-reservation-form">Pickup Date/Time
+                    <input type="datetime-local" th:field="*{pickup}" class="vehicle-reservation-input" required>
+                </label>
+                <label class="form-group vehicle-reservation-form" >Number of Days
+                    <input type="number" th:field="*{numberDays}" placeholder="non-negative amount" class="vehicle-reservation-input" required>
+                </label>
+                <label class="form-group vehicle-reservation-form">Dropoff Date/Time
+                    <input type="datetime-local" th:field="*{dropOffTime}" class="vehicle-reservation-input" required>
+                </label>
+                <label class="form-group vehicle-reservation-form">Vehicle ID
+                    <input type="number" th:value="${vehicleId}" th:field="*{vehicleId}" class="vehicle-reservation-input" readonly>
+                </label>
+                <input type="submit" value="Reserve" class="btn btn-secondary btn-md">
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

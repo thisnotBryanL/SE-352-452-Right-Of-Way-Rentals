@@ -27,17 +27,3 @@ services:
     build: ./mongo-seed
     depends_on:
       - mongo
-
-  app:
-#    image: rowr:m3
-    build: ..
-    env_file: .env
-    container_name: app
-    environment:
-      POSTGRES_HOSTNAME: $POSTGRES_HOST
-      MONGO_HOSTNAME: $MONGO_HOST
-    ports:
-      - $APP_PORT:$APP_PORT
-    depends_on:
-      - db
-      - mongo

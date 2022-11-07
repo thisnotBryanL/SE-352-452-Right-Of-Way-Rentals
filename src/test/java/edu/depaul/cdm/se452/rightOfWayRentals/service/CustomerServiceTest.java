@@ -2,6 +2,7 @@ package edu.depaul.cdm.se452.rightOfWayRentals.service;
 
 import edu.depaul.cdm.se452.rightOfWayRentals.data.model.Customer;
 import edu.depaul.cdm.se452.rightOfWayRentals.data.repository.CustomerRepository;
+import edu.depaul.cdm.se452.rightOfWayRentals.exception.RightOfWayRentalsException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,13 +44,13 @@ class CustomerServiceTest {
         final Long customerId = 0L;
         when(customerRepository.findById(customerId))
                 .thenReturn(Optional.empty());
-        Assertions.assertThrows(NoSuchElementException.class, () -> service.getCustomerById(customerId));
+        Assertions.assertThrows(RightOfWayRentalsException.class, () -> service.getCustomerById(customerId));
     }
 
     @Test
     void testGetAllCustomers() {
-        final Customer customer_1 = new Customer(1, "Wendy", Collections.emptyList());
-        final Customer customer_2 = new Customer(2, "Jerry", Collections.emptyList());
+        final Customer customer_1 = new Customer(1L, "Wendy", Collections.emptyList());
+        final Customer customer_2 = new Customer(2L, "Jerry", Collections.emptyList());
         List<Customer> expected = Arrays.asList(customer_1, customer_2);
         when(customerRepository.findAll()).thenReturn(expected);
 

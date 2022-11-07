@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/app.css}" rel="stylesheet">
+</head>
+<body>
+
+<div class="main-container">
+    <div class="header-container">
+        <h3 class="header">Welcome, <span th:text="${username}">Username </span></h3>
+    </div>
+
+    <div id="tri-button">
+
+            <button type="button" class="btn btn-primary btn-md" onclick="window.location.href='/reservations'">
+                Reservations
+            </button>
+
+
+            <button type="button" class="btn btn-primary btn-md" onclick="window.location.href='/vehicles/all'">
+                All Vehicles
+            </button>
+
+<!--            <button type="button" class="btn btn-primary btn-md" onclick="window.location.href='/vehicles/'"-->
+
+
+<!--            <button type="button" class="btn btn-primary btn-md" onclick="window.location.href='/balance'">Display-->
+<!--                Balance-->
+<!--            </button>-->
+
+    </div>
+</div>
+
+</body>
+</html>
