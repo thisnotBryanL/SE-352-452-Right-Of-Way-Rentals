@@ -9,20 +9,21 @@ import java.util.List;
 @Entity
 @Data
 @Generated
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "CUSTOMERS")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private long id;
+    private Long id;
 
     @Column
     private String name;
 
     @JsonIgnore
     @OneToMany(mappedBy = "customer")
+    @ToString.Exclude
     private List<Reservation> reservations;
 
 

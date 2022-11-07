@@ -2,6 +2,7 @@ package edu.depaul.cdm.se452.rightOfWayRentals.service;
 
 import edu.depaul.cdm.se452.rightOfWayRentals.data.model.Customer;
 import edu.depaul.cdm.se452.rightOfWayRentals.data.repository.CustomerRepository;
+import edu.depaul.cdm.se452.rightOfWayRentals.exception.RightOfWayRentalsException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,8 @@ public class CustomerService {
      */
     public Customer getCustomerById(final Long customerId) {
         log.trace("Querying customer repository with ID : {}", customerId);
-        return customerRepository.findById(customerId).orElseThrow();
+        return customerRepository.findById(customerId)
+                .orElseThrow(() -> new RightOfWayRentalsException("Could not find customer with ID : " + customerId));
     }
 
     /**
@@ -49,7 +51,7 @@ public class CustomerService {
         return Optional.ofNullable(name)
                 .map(Customer::new)
                 .map(customerRepository::save)
-                .orElseThrow();
+                .orElseThrow(() -> new RightOfWayRentalsException("Could not create/save customer with customerName : " + name));
     }
 
 

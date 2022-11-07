@@ -6,6 +6,7 @@ import edu.depaul.cdm.se452.rightOfWayRentals.data.pojo.VehicleType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -23,8 +24,8 @@ public class Vehicle {
     @Column
     private long id;
 
-    @Column(columnDefinition = "integer")
-    @Enumerated
+    @Column(columnDefinition = "varchar(30) default 'UNSPECIFIED'")
+    @Enumerated(EnumType.STRING)
     private VehicleType type;
 
     @Column(columnDefinition = "varchar(30) default 'UNSPECIFIED'")
@@ -40,6 +41,7 @@ public class Vehicle {
     @Column
     private boolean available;
 
+    @ToString.Exclude
     @JsonIgnore
     @OneToMany(mappedBy = "vehicle")
     private List<Reservation> reservations = new ArrayList<>();

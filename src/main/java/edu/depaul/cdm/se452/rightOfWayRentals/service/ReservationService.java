@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,8 +81,8 @@ public class ReservationService {
                 .status(ReservationStatus.RESERVED)
                 .pickupMileage(cvPair.vehicle().getMileage())
                 .dropoffMileage(cvPair.vehicle().getMileage()) // will need to include method for starting reservation / ending reservation
-                .pickup(reservationRequest.getPickup())
-                .dropoff(reservationRequest.getPickup()) // TODO : based on number of weeks / days / and dropoff time ("09:08 AM"), add this to the pickup LocalDateTime
+                .pickup(LocalDateTime.parse(reservationRequest.getPickup()))
+                .dropoff(LocalDateTime.parse(reservationRequest.getDropOffTime())) // TODO : based on number of weeks / days / and dropoff time ("09:08 AM"), add this to the pickup LocalDateTime
                 .build();
         return reservationRepository.save(reservation);
     }
