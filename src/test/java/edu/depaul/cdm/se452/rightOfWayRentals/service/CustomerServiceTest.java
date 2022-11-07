@@ -2,6 +2,7 @@ package edu.depaul.cdm.se452.rightOfWayRentals.service;
 
 import edu.depaul.cdm.se452.rightOfWayRentals.data.model.Customer;
 import edu.depaul.cdm.se452.rightOfWayRentals.data.repository.CustomerRepository;
+import edu.depaul.cdm.se452.rightOfWayRentals.exception.RightOfWayRentalsException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,7 +44,7 @@ class CustomerServiceTest {
         final Long customerId = 0L;
         when(customerRepository.findById(customerId))
                 .thenReturn(Optional.empty());
-        Assertions.assertThrows(NoSuchElementException.class, () -> service.getCustomerById(customerId));
+        Assertions.assertThrows(RightOfWayRentalsException.class, () -> service.getCustomerById(customerId));
     }
 
     @Test
