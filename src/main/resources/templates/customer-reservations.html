@@ -5,9 +5,6 @@
     <title>Reservations</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/app.css}" rel="stylesheet">
-<!--    <link href="../static/css/app.css" />-->
-<!--    <link href="../static/css/bootstrap.min.css" />-->
-<!--    <link href="../static/css/main.css"/>-->
 </head>
 <body>
 
@@ -15,27 +12,36 @@
         <div class="header-container">
             <h3 class="header">RESERVATIONS</h3>
         </div>
-
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Pickup</th>
+                <th scope="col">Dropoff</th>
+                <th scope="col">Pickup Mileage</th>
+                <th scope="col">Dropoff Mileage</th>
+                <th scope="col">Status</th>
+                <th scope="col">Vehicle ID</th>
+                <th scope="col">#</th>
+            </tr>
+            </thead>
+            <tbody>
             <th:block th:each="reservation : ${reservations}">
-                <div class="reservation-block">
-                    <table class="table-dark">
-                        <tr class="d-md-table-row">
-                            <td>PICKUP</td>
-                            <td th:text="${reservation.getPickup()}">12-12-1212 03:00</td>
-                        </tr>
-                        <tr class="d-md-table-row">
-                            <td>DROPOFF</td>
-                            <td th:text="${reservation.getDropoff()}">12-12-1212 03:00</td>
-                        </tr>
-                        <tr class="d-md-table-row">
-                            <td>vehicleId</td>
-                            <td th:text="${reservation.getVehicle().getId()}">12</td>
-                        </tr>
-                    </table>
-                </div>
+                <tr>
+                    <th scope="row" th:text="${reservation.getId()}" />
+                    <td th:text="${reservation.getPickup()}"/>
+                    <td th:text="${reservation.getDropoff()}"/>
+                    <td th:text="${reservation.getPickupMileage()}"/>
+                    <td th:text="${reservation.getDropoffMileage()}"/>
+                    <td th:text="${reservation.getStatus()}"/>
+                    <td th:text="${reservation.getVehicle().getId()}"/>
+                    <td>
+                        <a th:href="@{/reservations/{id}/cancel(id=${reservation.getId()})}" class="btn btn-sm btn-danger">CANCEL</a>
+                    </td>
+                </tr>
             </th:block>
-
+            </tbody>
+        </table>
     </div>
-
 </body>
 </html>

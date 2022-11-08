@@ -34,6 +34,10 @@ body {
     align-content: center;
 }
 
+.margin-button {
+    margin: 2rem;
+}
+
 .header {
     width: 100%;
     text-align: center;
