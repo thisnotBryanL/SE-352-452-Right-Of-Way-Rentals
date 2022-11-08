@@ -32,6 +32,9 @@ public class RentalCarController {
     final ReservationService reservationService;
 
 
+    /**
+     * Retrieve Customer using Customer ID
+     */
     @GetMapping(value = "customers/{customerId}")
     @Operation(summary = "Returns the customer that matches the supplied Customer ID")
     public Customer getCustomer(@PathVariable final Long customerId) {
@@ -39,6 +42,9 @@ public class RentalCarController {
         return customerService.getCustomerById(customerId);
     }
 
+    /**
+     * Get all customers
+     */
     @GetMapping(value = "customers")
     @Operation(summary = "Returns a list of all customers in the customer table")
     @ApiResponse(responseCode = "200", description = "valid response", content = {@Content(mediaType = "application/json", schema = @Schema(implementation = Customer.class))})
@@ -47,6 +53,9 @@ public class RentalCarController {
         return customerService.getAllCustomers();
     }
 
+    /**
+     * Add a customer using customer name
+     */
     @PostMapping(value = "customers", consumes = MediaType.APPLICATION_JSON_VALUE)
     @Operation(description = "Adds a customer to the customer table with the supplied customer name")
     public Customer addCustomer(@RequestBody final String customerName) {
@@ -54,6 +63,9 @@ public class RentalCarController {
         return customerService.createCustomer(customerName);
     }
 
+    /**
+     * Retrieve a vehicle using Vehicle ID
+     */
     @GetMapping(value = "vehicles/{vehicleId}")
     @Operation(description = "Gets a single vehicle with the supplied vehicle ID")
     public Vehicle getVehicle(@PathVariable final Long vehicleId) {
@@ -61,6 +73,9 @@ public class RentalCarController {
         return vehicleService.getVehicleById(vehicleId);
     }
 
+    /**
+     * Get all vehicles from vehicle table
+     */
     @GetMapping(value = "vehicles")
     @Operation(description = "Gets a list of all the vehicles from the vehicle table")
     public List<Vehicle> allVehicles() {
@@ -68,6 +83,9 @@ public class RentalCarController {
         return vehicleService.getAllVehicles();
     }
 
+    /**
+     * Add a vehicle using POST request
+     */
     @PostMapping(value = "vehicles", consumes = MediaType.APPLICATION_JSON_VALUE)
     @Operation(description = "Adds a single vehicle to the vehicle table with a POST request")
     public Vehicle addVehicle(@RequestBody final PostVehicleRequest request) {
@@ -75,30 +93,45 @@ public class RentalCarController {
         return vehicleService.addVehicle(request.getVehicleType(), request.getVehicleMake(), request.getVehicleModel(), request.getVehicleMileage());
     }
 
+    /**
+     * Retrieve reservation using Reservation ID
+     */
     @GetMapping(value = "reservations/{reservationId}")
     public Reservation getReservation(@PathVariable final Long reservationId) {
         log.trace("getReservation {}", reservationId);
         return reservationService.getReservationById(reservationId);
     }
 
+    /**
+     * Retrieve all reservations
+     */
     @GetMapping(value = "reservations")
     public List<Reservation> allReservations() {
         log.trace("allReservations");
         return reservationService.getAllReservations();
     }
 
+    /**
+     * Retrieve all reservations linked to a specific customer using Customer ID
+     */
     @GetMapping(value = "reservations/customer/{customerId}")
     public List<Reservation> reservationsRelatedToCustomer(@PathVariable final Long customerId) {
         log.trace("reservationsRelatedToCustomer {}", customerId);
         return reservationService.getReservationsWithCustomerId(customerId);
     }
 
+    /**
+     * Retrieve all reservations linked to a specific vehicle using Vehicle ID
+     */
     @GetMapping(value = "reservations/vehicle/{vehicleId}")
     public List<Reservation> reservationsRelatedToVehicle(@PathVariable final Long vehicleId) {
         log.trace("reservationsRelatedToVehicle {}", vehicleId);
         return reservationService.getReservationsWithVehicleId(vehicleId);
     }
 
+    /**
+     * Retrieve all Reservations linked to a specific customer and vehicles using both Customer ID and Vehicle ID
+     */
     @GetMapping(value = "reservations/multi")
     public List<Reservation> reservationsRelatedToCustomerAndVehicle(
             @RequestParam("customer") final Long customerId,
@@ -107,13 +140,20 @@ public class RentalCarController {
         return reservationService.getReservationsWithCustomerAndVehicle(customerId, vehicleId);
     }
 
+    /**
+     * Add a new reservation using POST method and reservation request Model
+     */
     @PostMapping(value = "reservations")
     public Reservation addReservation(@RequestBody final PostReservationRequest reservationRequest) {
         log.trace("addReservation {}", reservationRequest);
         return reservationService.addReservation(reservationRequest);
     }
 
-    // pickuptime and dropoff time format: yyyy-MM-dd-HH:mm
+    /**
+     * Add a new reservation using Query parameters
+     *
+     * pickuptime and dropoff time format: yyyy-MM-dd-HH:mm
+     */
     @GetMapping(value="reservations/cid={customerID}/vid={vehicleID}/pickup={pickupTime}/dropOffTime={dropOffTime}")
     public Reservation addReservation(@PathVariable Long customerID, @PathVariable Long vehicleID, @PathVariable String pickupTime,
                                       @PathVariable String dropOffTime){

@@ -30,11 +30,17 @@ public class RentalCarUIController {
     private final VehicleService vehicleService;
     private final SecurityHelper securityHelper;
 
+    /**
+     * Redirects users to homepage if they do not type in the full path
+     */
     @GetMapping(value = "/")
     public RedirectView redirectToHome() {
         return new RedirectView("/home");
     }
 
+    /**
+     * User Homepage to accepts login credentials
+     */
     @GetMapping("home")
     public String home(final Model model) {
         final CustomerUserDetails currentCustomer = securityHelper.getCurrentCustomer();
@@ -42,6 +48,9 @@ public class RentalCarUIController {
         return "home";
     }
 
+    /**
+     * Route to retrieve all user reservations
+     */
     @GetMapping("/reservations")
     public String getCustomerReservations(final Model model) {
         final CustomerUserDetails currentCustomer = securityHelper.getCurrentCustomer();
@@ -52,6 +61,9 @@ public class RentalCarUIController {
         return "customer-reservations";
     }
 
+    /**
+     * Get all User Vehicles
+     */
     @GetMapping("/vehicles/all")
     public String getVehicles(final Model model) {
         log.trace("Retrieving all vehicles to display on UI");
@@ -61,6 +73,9 @@ public class RentalCarUIController {
         return "vehicles";
     }
 
+    /**
+     * Reserve a specific vehicle matching the vehicle ID
+     */
     @GetMapping("/vehicles/reserve/{id}")
     public String reserveVehicleWithId(@PathVariable final Long id, final Model model) {
         log.trace("Retrieving data required for reserve vehicle view with vehicle ID {}", id);
@@ -72,6 +87,9 @@ public class RentalCarUIController {
         return "reserve-vehicle";
     }
 
+    /**
+     * Reserve any available vehicle
+     */
     @PostMapping("/vehicles/reserve")
     public String postReservationForVehicle(@ModelAttribute PostReservationRequest reservationRequest, final Model model) {
         log.trace("Received request to reserve vehicle with ID : {}",reservationRequest.getVehicleId());
@@ -82,6 +100,9 @@ public class RentalCarUIController {
         return "success";
     }
 
+    /**
+     * Cancel spcific reservation that matches specified reservation ID
+     */
     @GetMapping("/reservations/{id}/cancel")
     public String cancelReservation(@PathVariable final Long id, final Model model) {
         log.trace("Beginning to cancel reservation with ID : {}", id);
