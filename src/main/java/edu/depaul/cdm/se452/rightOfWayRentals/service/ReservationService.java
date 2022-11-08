@@ -6,6 +6,7 @@ import edu.depaul.cdm.se452.rightOfWayRentals.data.pojo.CustomerVehiclePair;
 import edu.depaul.cdm.se452.rightOfWayRentals.data.pojo.ReservationStatus;
 import edu.depaul.cdm.se452.rightOfWayRentals.data.pojo.request.PostReservationRequest;
 import edu.depaul.cdm.se452.rightOfWayRentals.data.repository.ReservationRepository;
+import edu.depaul.cdm.se452.rightOfWayRentals.exception.RightOfWayRentalsException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -82,7 +83,7 @@ public class ReservationService {
                 .pickupMileage(cvPair.vehicle().getMileage())
                 .dropoffMileage(cvPair.vehicle().getMileage()) // will need to include method for starting reservation / ending reservation
                 .pickup(LocalDateTime.parse(reservationRequest.getPickup()))
-                .dropoff(LocalDateTime.parse(reservationRequest.getDropOffTime())) // TODO : based on number of weeks / days / and dropoff time ("09:08 AM"), add this to the pickup LocalDateTime
+                .dropoff(LocalDateTime.parse(reservationRequest.getDropOffTime()))
                 .build();
         return reservationRepository.save(reservation);
     }
@@ -100,6 +101,16 @@ public class ReservationService {
         var cvPair = helper.getCustomerVehiclePair(customerID,vehicleID);
         var newReservation = Reservation.newReservation(cvPair.customer(),cvPair.vehicle(),pickupTime,dropOffTime);
         return reservationRepository.save(newReservation);
+    }
+
+    public Reservation removeReservation(Long reservationId) {
+        log.trace("Removing reservation with ID : {}", reservationId);
+        final Reservation reservation = reservationRepository.findById(reservationId)
+                .orElseThrow(() -> new RightOfWayRentalsException("Could not find reservation with ID : " + reservationId));
+        log.trace("Found reservation : {}", reservation);
+        reservationRepository.delete(reservation);
+        log.trace("Removed reservation : {}", reservation);
+        return reservation;
     }
 
 

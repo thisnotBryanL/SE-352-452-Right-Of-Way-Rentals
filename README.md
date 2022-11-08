@@ -119,12 +119,19 @@ curl -s -X 'GET' \
   
 ```
 
-
-
 ## Contributors
 
-| Contributors                                                                              | Contributions|
-|-----------------------------------------------------------------------------------------|--------------------|
-| Bryan Lee                                         | Service/Controller |
-| Nermin Dedovic                                          | Service/Controller/Relationship for Models        |               
-| Ethan Ly  | Relationship for Models | 
+| Contributors   | Contributions                                                 |
+|----------------|---------------------------------------------------------------|
+| Bryan Lee      | Service/Controller/NoSQL/Documentation                        |
+| Nermin Dedovic | Service/Controller/Thymeleaf/Security/Relationship for Models |               
+| Ethan Ly       | Relationship for Models/NoSQL/Documentation                   | 
+
+
+
+## UI
+![](imgs/001_login_page.png)
+![](imgs/002_home_page.png)
+![](imgs/003_customer_view_vehicles.png)
+![](imgs/004_view_my_reservations.png)
+![](imgs/005_reserve_vehicle_form_view.png)
