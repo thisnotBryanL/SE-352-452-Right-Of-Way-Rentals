@@ -17,6 +17,7 @@ Swagger UI: http://localhost:8080/swagger-ui/index.html
 | [GitHub Desktop](https://desktop.github.com/)                                           | Manage Git         |               |
 | [GitFlow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) | Branching Strategy | refer to link |
 | [SonarLint](https://www.sonarsource.com/products/sonarlint/)                            | Clean code         | IDE plugin    |
+| [Docker Desktop](https://www.docker.com/products/docker-desktop/)                       | Manage Docker Pods |               |
 
 ## How to spin up via docker-compose
 - In root directory, build the application image by executing `docker build -t rowr:latest .` 
@@ -122,10 +123,12 @@ curl -s -X 'GET' \
 ## Contributors
 
 | Contributors   | Contributions                                                 |
-|----------------|---------------------------------------------------------------|
-| Bryan Lee      | Service/Controller/NoSQL/Documentation                        |
-| Nermin Dedovic | Service/Controller/Thymeleaf/Security/Relationship for Models |               
-| Ethan Ly       | Relationship for Models/NoSQL/Documentation                   | 
+|----------------|----------------------------------------------------------------------------|
+| Bryan Lee      | Service/Controller/Thymeleaf/Security/Relationship for Models **             |
+| Nermin Dedovic | Service/Controller/Thymeleaf/Security/Relationship for Models **             |               
+| Ethan Ly       | Service/Controller/Thymeleaf/Security/Relationship for Models **             | 
+
+** We did a lot of pair programming to easily communicate with one another
 
 
 
